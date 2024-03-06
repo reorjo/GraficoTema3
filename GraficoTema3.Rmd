@@ -43,7 +43,6 @@ grafico_covid <- ggplot(covid, aes(x = date, y = new_deaths_smoothed_per_million
        y = "Muertes diarias por millón de habitantes",
        col = "País",
        size = "País")
-
 grafico_covid
 ```
 
