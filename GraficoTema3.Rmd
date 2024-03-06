@@ -38,11 +38,10 @@ grafico_covid <- ggplot(covid, aes(x = date, y = new_deaths_smoothed_per_million
   scale_size_manual(values = tam) +
   scale_color_manual(values = colores) +
   labs(title = "Muertes por COVID-19 hasta la fecha actual",
-       subtitle = "Las muertes confirmadas de algunos países son menores que el     número real.",
        x = "Fecha",
        y = "Muertes diarias por millón de habitantes",
        col = "País",
-       size = "País", caption = "Source: [Johns Hopkins University CSSSE COVID_19 Data]") +
+       size = "País")+
   theme(legend.key = element_rect(fill = "white"),
         legend.text = element_text(size = 10),
         legend.title = element_text(size = 12, face = "bold"),
