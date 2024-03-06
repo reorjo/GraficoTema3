@@ -1,0 +1,36 @@
+---
+title: "GraficoTema3"
+output: html_document
+date: "2024-03-06"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(ggplot2)
+library(plotly)
+library(htmlwidgets)
+
+# Importacion de datos
+filename <- "data/owid-covid-data.csv"
+datacovid <- read.csv(filename)
+
+# Vector de paises
+paises <- c("Spain", "Italy", "France", "United States", "Germany", "Canada", "Japan", "India")
+
+# Cambiar formato de fecha
+datacovid <- as.data.frame(datacovid)
+datacovid$date <- as.Date(datacovid$date, format = "%Y-%m-%d")
+
+# Seleccionar paises
+covid <- subset(datacovid, location %in% paises)
+
+# Vector de colores
+colores <- c("Spain" = "red", "Italy" = "pink", "France" = "blue", "United States" = "lightgreen", "Germany" = "purple", "Canada" = "orange", "Japan" = "grey", "India" = "brown")
+
+# Vestor de tamaños
+tamano <- c("Spain" = 0.7, "Italy" = 0.3, "France" = 0.3, "United States" = 0.3, "Germany" = 0.3, "Canada" = 0.3, "Japan" = 0.3, "India" = 0.3)
+```
+
