@@ -31,6 +31,19 @@ covid <- subset(datacovid, location %in% paises)
 colores <- c("Spain" = "red", "Italy" = "pink", "France" = "blue", "United States" = "lightgreen", "Germany" = "purple", "Canada" = "orange", "Japan" = "grey", "India" = "brown")
 
 # Vestor de tamaños
-tamano <- c("Spain" = 0.7, "Italy" = 0.3, "France" = 0.3, "United States" = 0.3, "Germany" = 0.3, "Canada" = 0.3, "Japan" = 0.3, "India" = 0.3)
+tam <- c("Spain" = 0.7, "Italy" = 0.3, "France" = 0.3, "United States" = 0.3, "Germany" = 0.3, "Canada" = 0.3, "Japan" = 0.3, "India" = 0.3)
+
+grafico_covid <- ggplot(covid, aes(x = date, y = new_deaths_smoothed_per_million, col= location)) +
+  geom_line(aes(size = location)) + 
+  scale_size_manual(values = tam) +
+  scale_color_manual(values = colores) +
+  labs(title = "Muertes por COVID-19 hasta la fecha actual",
+       subtitle = "Las muertes confirmadas de algunos países son menores que el     número real.",
+       x = "Fecha",
+       y = "Muertes diarias por millón de habitantes",
+       col = "País",
+       size = "País")
+
+grafico_covid
 ```
 
