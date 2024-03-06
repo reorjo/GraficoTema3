@@ -42,7 +42,24 @@ grafico_covid <- ggplot(covid, aes(x = date, y = new_deaths_smoothed_per_million
        x = "Fecha",
        y = "Muertes diarias por millón de habitantes",
        col = "País",
-       size = "País")
-grafico_covid
+       size = "País", caption = "Source: [Johns Hopkins University CSSSE COVID_19 Data]") +
+  theme(legend.key = element_rect(fill = "white"),
+        legend.text = element_text(size = 10),
+        legend.title = element_text(size = 12, face = "bold"),
+        legend.margin = margin(5, 5, 5, 5)) +
+  guides(col = guide_legend(override.aes = list(size = 1.5))) + 
+  scale_x_date(date_labels = "%b %d, %Y") +
+  theme(panel.grid.major.y = element_line("grey",size = 0.1,linetype = 2))
+  
+
+
+grafico_covid_interactivo <- ggplotly(grafico_covid)
+
+# Mostrar el gráfico interactivo
+grafico_covid_interactivo
+
+# Guardar la gráfica en un archivo HTML
+saveWidget(grafico_covid_interactivo, file = "graficacovid.html")
+
 ```
 
